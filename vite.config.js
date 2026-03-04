@@ -31,7 +31,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/sonachala-userfrontend/', 
+  base: '/', 
   server: {
     historyApiFallback: true // ✅ This fixes the 404 on refresh locally
   }

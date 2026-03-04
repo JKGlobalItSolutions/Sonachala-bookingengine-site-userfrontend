@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jkglobalitsolutions.github.io/sonachala-userfrontend",
+  "homepage": "https://www.sonachala.com/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
