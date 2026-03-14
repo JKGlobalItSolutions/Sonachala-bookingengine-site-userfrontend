@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="container">
         <div className="row align-items-start">
 
-          {/* LEFT SIDE - LOGO / IMAGE */}
+          {/* LEFT SIDE */}
           <div className="col-md-6 mb-4">
             <img
               src={img1}
@@ -24,13 +24,15 @@ const Footer = () => {
               }}
             />
 
-            <p style={{ fontSize: "14px", maxWidth: "400px" }}>
-              Empowering hotels with smart technology solutions,
-              seamless automation, and powerful revenue management tools.
+            <p style={{ fontSize: "14px", maxWidth: "420px" }}>
+              Sonachala Hotel Revenue Management provides smart hotel technology
+              solutions including a powerful booking engine, channel
+              management, and revenue optimization tools to help hotels
+              increase direct bookings and maximize revenue.
             </p>
           </div>
 
-          {/* RIGHT SIDE - CONTACT CONTENT */}
+          {/* RIGHT SIDE */}
           <div className="col-md-6">
             <h6 style={{ fontWeight: "600", marginBottom: "10px" }}>
               Contact Us
@@ -45,12 +47,32 @@ const Footer = () => {
             ></div>
 
             <p style={{ fontSize: "14px", marginBottom: "8px" }}>
-              Sonachala Technologies
+              Sonachala Hotel Revenue Management
             </p>
 
             <p style={{ fontSize: "14px", marginBottom: "8px" }}>
-              Annai Parvathi Nagar, opposite to Collectorate Office,
+              Annai Parvathi Nagar, Opposite to Collectorate Office,
               Vengikkal, Tiruvannamalai - 606604
+            </p>
+
+            {/* Booking Engine
+            // <p style={{ fontSize: "14px", marginBottom: "6px" }}>
+            //   <a
+            //     href="https://sonachala-live.web.app/"
+            //     style={{ color: "#fff", textDecoration: "none" }}
+            //   >
+            //     Booking Engine
+            //   </a>
+            // </p> */}
+
+            {/* Admin Login */}
+            <p style={{ fontSize: "14px", marginBottom: "6px" }}>
+              <a
+                href="https://sonachala-live.web.app/admin"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Admin Login
+              </a>
             </p>
 
             {/* Phones */}
@@ -87,7 +109,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* SOCIAL SECTION */}
+        {/* SOCIAL */}
         <div className="row align-items-center mt-4">
           <div className="col-md-12">
             <div style={{ display: "flex", gap: "10px" }}>
@@ -122,7 +144,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* BOTTOM SECTION */}
+      {/* BOTTOM */}
       <div
         style={{
           marginTop: "40px",
@@ -133,7 +155,7 @@ const Footer = () => {
         }}
       >
         <div style={{ marginBottom: "8px", fontWeight: "500" }}>
-          Hotel Revenue Management
+          Sonachala Hotel Revenue Management
         </div>
 
         Copyright 2026 |
