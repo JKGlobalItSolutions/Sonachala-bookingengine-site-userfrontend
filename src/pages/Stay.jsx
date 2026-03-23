@@ -97,7 +97,7 @@ const Stay = () => {
         window.addEventListener("scroll", handleScroll)
 
         const searchParams = new URLSearchParams(location.search)
-        const locationParam = searchParams.get("location") || localStorage.getItem("location") || "Chennai"
+        const locationParam = searchParams.get("destination") || searchParams.get("location") || localStorage.getItem("location") || ""
         const checkInParam = searchParams.get("checkIn") || localStorage.getItem("checkIn")
         const checkOutParam = searchParams.get("checkOut") || localStorage.getItem("checkOut")
         const adultsParam = Number.parseInt(searchParams.get("adults") || localStorage.getItem("adults") || "1")
@@ -159,7 +159,7 @@ const Stay = () => {
         }
         loadAdminCharges()
         
-        fetchHotelsAndPreloadPrices()
+        fetchHotelsAndPreloadPrices(locationParam)
 
         // Store initial values in local storage
         localStorage.setItem("location", locationParam)
@@ -176,7 +176,7 @@ const Stay = () => {
         }
     }, [location.pathname, location.search])
 
-    const fetchHotelsAndPreloadPrices = async () => {
+    const fetchHotelsAndPreloadPrices = async (locationFilter = "") => {
         setLoading(true)
         try {
             // Fetch Hotels
@@ -209,11 +209,36 @@ const Stay = () => {
             // ... (Same logic as original if needed, assuming partners are in "properties" collection)
 
             setHotels(allProperties)
-            setFilteredHotels(allProperties)
+            
+            // Filter properties by search location - use passed parameter
+            const locationFiltered = filterPropertiesByLocation(allProperties, locationFilter)
+            setFilteredHotels(locationFiltered)
             setLoading(false)
         } catch (error) {
             console.error("Error fetching hotels/homestays:", error)
             setLoading(false)
+        }
+    }
+
+    // Filter properties by location - only show Tiruvannamalai properties
+    const filterPropertiesByLocation = (properties, location) => {
+        if (!location || location.trim() === "") {
+            return properties
+        }
+        
+        const searchLocationLower = location.toLowerCase().trim()
+        
+        // Only show properties if the search location is Tiruvannamalai (or variations)
+        const isTiruvannamalaiSearch = searchLocationLower.includes("tiruvannamalai") || 
+                                     searchLocationLower.includes("thiruvannamalai") ||
+                                     searchLocationLower.includes("tvm") ||
+                                     searchLocationLower.includes("annamalai")
+        
+        if (isTiruvannamalaiSearch) {
+            return properties
+        } else {
+            // For any other location, return empty array (show nothing)
+            return []
         }
     }
 
@@ -268,7 +293,10 @@ const Stay = () => {
     }
 
     const applyFilters = (filtersToApply) => {
-        const filtered = hotels.filter((hotel) => {
+        // Start with location-filtered hotels
+        let baseFiltered = filterPropertiesByLocation(hotels, searchLocation)
+        
+        const filtered = baseFiltered.filter((hotel) => {
             const [minPrice, maxPrice] = filtersToApply.priceRange
             if (hotel.price < minPrice || (maxPrice !== 6000 && hotel.price > maxPrice)) {
                 return false
@@ -302,7 +330,8 @@ const Stay = () => {
         }
         setFilters(resetFilters)
         setAllDeals(false)
-        setFilteredHotels(hotels)
+        // Reset to location-filtered hotels, not all hotels
+        setFilteredHotels(filterPropertiesByLocation(hotels, searchLocation))
     }
 
     const updateGuests = (a, c, r) => {

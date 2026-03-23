@@ -25,11 +25,17 @@ const Footer = () => {
             />
 
             <p style={{ fontSize: "14px", maxWidth: "420px" }}>
-              Sonachala Hotel Revenue Management provides smart hotel technology
+              Sonachala Technologies private limited provides smart hotel technology
               solutions including a powerful booking engine, channel
               management, and revenue optimization tools to help hotels
               increase direct bookings and maximize revenue.
             </p>
+            <p style={{ fontSize: "14px", maxWidth: "420px" }}>
+              <a href="https://sonachala-live.web.app" target="_blank" rel="noopener noreferrer" style={{ color: "#fff", textDecoration: "none" }}>
+                Become a Host 
+              </a>
+            </p>
+
           </div>
 
           {/* RIGHT SIDE */}
@@ -47,7 +53,7 @@ const Footer = () => {
             ></div>
 
             <p style={{ fontSize: "14px", marginBottom: "8px" }}>
-              Sonachala Hotel Revenue Management
+              Sonachala Technologies private limited
             </p>
 
             <p style={{ fontSize: "14px", marginBottom: "8px" }}>
@@ -66,14 +72,7 @@ const Footer = () => {
             // </p> */}
 
             {/* Admin Login */}
-            <p style={{ fontSize: "14px", marginBottom: "6px" }}>
-              <a
-                href="https://sonachala-live.web.app/admin"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                Admin Login
-              </a>
-            </p>
+            
 
             {/* Phones */}
             <p style={{ fontSize: "14px", marginBottom: "6px" }}>
@@ -155,7 +154,7 @@ const Footer = () => {
         }}
       >
         <div style={{ marginBottom: "8px", fontWeight: "500" }}>
-          Sonachala Hotel Revenue Management
+          Sonachala Technologies private limited
         </div>
 
         Copyright 2026 |

@@ -209,11 +209,36 @@ const HotelListing = () => {
       )
 
       setHotels(hotelsData)
-      setFilteredHotels(hotelsData)
+      
+      // Filter properties by search location - use passed parameter
+      const locationFiltered = filterPropertiesByLocation(hotelsData, searchLocation)
+      setFilteredHotels(locationFiltered)
       setLoading(false)
     } catch (error) {
       console.error("Error fetching hotels:", error)
       setLoading(false)
+    }
+  }
+
+  // Filter properties by location - only show Tiruvannamalai properties
+  const filterPropertiesByLocation = (properties, location) => {
+    if (!location || location.trim() === "") {
+      return properties
+    }
+    
+    const searchLocationLower = location.toLowerCase().trim()
+    
+    // Only show properties if the search location is Tiruvannamalai (or variations)
+    const isTiruvannamalaiSearch = searchLocationLower.includes("tiruvannamalai") || 
+                                 searchLocationLower.includes("thiruvannamalai") ||
+                                 searchLocationLower.includes("tvm") ||
+                                 searchLocationLower.includes("annamalai")
+    
+    if (isTiruvannamalaiSearch) {
+      return properties
+    } else {
+      // For any other location, return empty array (show nothing)
+      return []
     }
   }
 
